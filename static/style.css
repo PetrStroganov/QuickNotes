@@ -113,12 +113,13 @@ body {
  }
  
  /* Сообщения */
- .alert {
-     padding: 10px;
-     margin-bottom: 20px;
-     border-radius: 4px;
-     text-align: center;
- }
+.alert {
+    background: #e74c3c;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
  
  .alert.success {
      background-color: #d4edda;

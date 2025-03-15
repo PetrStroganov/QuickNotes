@@ -1,9 +1,9 @@
-/* Общие стили */
+
 body {
      font-family: Arial, sans-serif;
      margin: 0;
      padding: 0;
-     background-color: #363636; /* Серый фон */
+     background-color: #363636;
      color: #333;
      display: flex;
      flex-direction: column;
@@ -19,9 +19,9 @@ body {
      text-align: center;
  }
  
- /* Шапка */
+
  header {
-     background-color: #ff5722; /* Оранжевый */
+     background-color: #ff5722;
      color: rgb(0, 0, 0);
      padding: 10px 0;
      width: 100%;
@@ -52,7 +52,7 @@ body {
      text-decoration: underline;
  }
  
- /* Формы */
+
  .auth-form {
      max-width: 400px;
      margin: 20px auto;
@@ -65,7 +65,7 @@ body {
  
  .auth-form h2 {
      margin-bottom: 20px;
-     color: #ff5722; /* Оранжевый */
+     color: #ff5722;
  }
  
  .form-group {
@@ -86,19 +86,19 @@ body {
      border: 1px solid #ccc;
      border-radius: 4px;
      font-size: 16px;
-     background-color: #f9f9f9; /* Светло-серый фон для полей ввода */
+     background-color: #f9f9f9;
  }
  
  .form-control:focus {
-     border-color: #ff5722; /* Оранжевый */
+     border-color: #ff5722;
      outline: none;
  }
  
- /* Кнопки */
+
  .btn {
      width: 100%;
      padding: 10px;
-     background-color: #ff5722; /* Оранжевый */
+     background-color: #ff5722;
      color: rgb(0, 0, 0);
      border: none;
      border-radius: 4px;
@@ -108,16 +108,17 @@ body {
  }
  
  .btn:hover {
-     background-color: #e64a19; /* Темно-оранжевый при наведении */
+     background-color: #e64a19;
  }
  
- /* Сообщения */
- .alert {
-     padding: 10px;
-     margin-bottom: 20px;
-     border-radius: 4px;
-     text-align: center;
- }
+
+.alert {
+    background: #e74c3c;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
  
  .alert.success {
      background-color: #d4edda;
@@ -129,7 +130,7 @@ body {
      color: #721c24;
  }
  
- /* Ссылки в формах */
+
  .auth-form p {
      text-align: center;
      margin-top: 15px;
@@ -137,7 +138,7 @@ body {
  }
  
  .auth-form a {
-     color: #ff5722; /* Оранжевый */
+     color: #ff5722;
      text-decoration: none;
  }
  

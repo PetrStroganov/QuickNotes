@@ -1,6 +1,7 @@
 import bcrypt
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from sqlalchemy.exc import IntegrityError
 from forms import RegistrationForm, LoginForm
 from models import db, User
 from config import Config
@@ -32,11 +33,19 @@ def notes():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_password = bcrypt.hashpw(form.password.data.encode('utf-8'), bcrypt.gensalt())
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password.decode('utf-8'))
-        db.session.add(user)
-        db.session.commit()
-        return redirect(url_for('login'))
+        try:
+            hashed_password = bcrypt.hashpw(form.password.data.encode('utf-8'), bcrypt.gensalt())
+            user = User(username=form.username.data, email=form.email.data, password=hashed_password.decode('utf-8'))
+            db.session.add(user)
+            db.session.commit()
+            flash('Регистрация прошла успешно! Теперь вы можете войти.', 'success')
+            return redirect(url_for('login'))
+        except IntegrityError:
+            db.session.rollback()
+            flash('Username или email уже существуют', 'error')
+        except Exception as e:
+            db.session.rollback()
+            flash('Произошла ошибка при регистрации', 'error')
     return render_template('register.html', form=form)
 
 
@@ -47,7 +56,10 @@ def login():
         user = db.session.scalar(db.select(User).filter_by(username=form.username.data))
         if user and bcrypt.checkpw(form.password.data.encode('utf-8'), user.password.encode('utf-8')):
             login_user(user)
+            flash('Вы успешно вошли!', 'success')
             return redirect(url_for('notes'))
+        else:
+            flash('Неверный логин или пароль', 'error')
     return render_template('login.html', form=form)
 
 

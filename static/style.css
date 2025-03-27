@@ -95,7 +95,7 @@ body {
      outline: none;
  }
  
- /* Кнопки */
+
  .btn {
      width: 100%;
      padding: 10px;
@@ -111,24 +111,26 @@ body {
  .btn:hover {
      background-color: #e64a19;
  }
- 
 
-.alert {
-    background: #e74c3c;
-    color: white;
-    padding: 0.5rem;
+
+ .alert-success {
+    padding: 15px;
+    border: 1px solid transparent;
     border-radius: 4px;
-    margin-bottom: 1rem;
-}
- 
- .alert.success {
-     background-color: #d4edda;
-     color: #155724;
+    margin-bottom: 20px;
+    margin: 10px auto;
+    background-color: #d4edda;
+    color: #155724;
  }
- 
- .alert.error {
-     background-color: #f8d7da;
-     color: #721c24;
+
+ .alert-error {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin: 10px auto;
+    background-color: #f8d7da;
+    color: #721c24;
  }
  
 

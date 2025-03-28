@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="note-form">
+    <h2>Новая заметка</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.title.label }}
+            {{ form.title(class="form-control") }}
+            {% for error in form.title.errors %}
+            <div class="alert-error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.content.label }}
+            {{ form.content(class="form-control", rows=5) }}
+            {% for error in form.content.errors %}
+            <div class="alert-error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.tags.label }}
+            {{ form.tags(class="form-control") }}
+            {% for error in form.tags.errors %}
+            <div class="alert-error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn">Создать заметку</button>
+    </form>
+</div>
+{% endblock %}

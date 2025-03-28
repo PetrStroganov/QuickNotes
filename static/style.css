@@ -148,3 +148,118 @@ body {
  .auth-form a:hover {
      text-decoration: underline;
  }
+
+
+ .notes-container {
+     max-width: 1200px;
+     margin: 20px auto;
+     padding: 0 20px;
+ }
+
+ .notes-header {
+     display: flex;
+     color: #F0FFF0;
+     align-items: center;
+     margin-bottom: 30px;
+     display: grid;
+ }
+
+ .notes-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+     gap: 20px;
+ }
+
+ .note-card {
+     background: #ff5722;
+     border-radius: 8px;
+     padding: 20px;
+     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+ }
+
+ .note-card:hover {
+    transform: translateY(-5px);
+    background: #ff5700;
+ }
+
+ .note-link {
+    text-decoration: none;
+    color: inherit;
+ }
+
+ .note-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin-bottom: 15px;
+ }
+
+ .note-date {
+     font-size: 0.9em;
+     color: #666;
+ }
+
+ .note-content {
+     line-height: 1.6;
+     color: #333;
+     margin-bottom: 15px;
+     overflow: hidden;
+ }
+
+ .note-tags {
+     border-top: 1px solid #eee;
+     padding-top: 10px;
+ }
+
+ .tag {
+     display: inline-block;
+     background: #f0f0f0;
+     color: #666;
+     padding: 4px 8px;
+     border-radius: 4px;
+     margin: 2px;
+     font-size: 0.85em;
+ }
+
+ .empty-notes {
+     text-align: center;
+     padding: 50px 0;
+     color: #666;
+ }
+
+ .note-form {
+     max-width: 800px;
+     margin: 20px auto;
+     padding: 20px;
+     background: #fff;
+     border-radius: 8px;
+     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+ }
+
+ .note-content-full {
+    line-height: 1.8;
+    font-size: 1.1em;
+    color: #333;
+    white-space: pre-wrap;
+    overflow: hidden;
+ }
+
+ .note-detail-card {
+    background: #ff5722;
+    border-radius: 8px;
+    padding: 30px;
+    margin-top: 20px;
+ }
+
+ .note-detail-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+ }
+
+ .back-link {
+     color: #F0FFF0;
+     text-decoration: none;
+     margin-bottom: 20px;
+     display: inline-block;
+ }

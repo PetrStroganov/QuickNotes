@@ -1,9 +1,9 @@
 import bcrypt
-from flask import Flask, render_template, redirect, url_for, flash
+from flask import Flask, render_template, redirect, url_for, flash, abort
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from sqlalchemy.exc import IntegrityError
-from forms import RegistrationForm, LoginForm
-from models import db, User
+from forms import RegistrationForm, LoginForm, NoteForm
+from models import db, User, Note
 from config import Config
 
 app = Flask(__name__)
@@ -25,8 +25,43 @@ def load_user(user_id):
 
 @app.route('/')
 @login_required
-def notes():
-    return render_template('base.html', user=current_user)
+def index():
+    notes = db.session.scalars(
+        db.select(Note)
+        .filter_by(user_id=current_user.id)
+        .order_by(Note.created_at.desc())).all()
+    return render_template('notes.html', notes=notes)
+
+
+@app.route('/add_note', methods=['GET', 'POST'])
+@login_required
+def add_note():
+    form = NoteForm()
+    if form.validate_on_submit():
+        try:
+            note = Note(
+                title=form.title.data,
+                content=form.content.data,
+                tags=form.tags.data,
+                user_id=current_user.id
+            )
+            db.session.add(note)
+            db.session.commit()
+            flash('Заметка успешно создана!', 'success')
+            return redirect(url_for('index'))
+        except Exception as e:
+            db.session.rollback()
+            flash('Ошибка при создании заметки', 'error')
+    return render_template('add_note.html', form=form)
+
+
+@app.route('/note/<int:note_id>')
+@login_required
+def view_note(note_id):
+    note = db.session.get(Note, note_id)
+    if not note or note.user_id != current_user.id:
+        abort(404)
+    return render_template('note_detail.html', note=note)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -57,7 +92,7 @@ def login():
         if user and bcrypt.checkpw(form.password.data.encode('utf-8'), user.password.encode('utf-8')):
             login_user(user)
             flash('Вы успешно вошли!', 'success')
-            return redirect(url_for('notes'))
+            return redirect(url_for('index'))
         else:
             flash('Неверный логин или пароль', 'error')
     return render_template('login.html', form=form)

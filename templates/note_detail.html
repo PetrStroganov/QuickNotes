@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="note-detail-container">
+    <a href="{{ url_for('index') }}" class="back-link">← Назад к списку</a>
+
+    <div class="note-detail-card">
+        <div class="note-header">
+            <h1>{{ note.title }}</h1>
+            <span class="note-date">{{ note.created_at.strftime('%d.%m.%Y %H:%M') }}</span>
+        </div>
+
+        <div class="note-content-full">
+            {{ note.content|safe }}
+        </div>
+
+        {% if note.tags %}
+        <div class="note-tags">
+            {% for tag in note.tags.split(',') %}
+            <span class="tag">{{ tag.strip() }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

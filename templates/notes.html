@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="notes-container">
+    <div class="notes-header">
+        <h1>Мои заметки</h1>
+        <a href="{{ url_for('add_note') }}" class="btn">+ Новая заметка</a>
+    </div>
+    {% if notes %}
+    <div class="notes-grid">
+        {% for note in notes %}
+        <a href="{{ url_for('view_note', note_id=note.id) }}" class="note-link">
+            <div class="note-card">
+                <div class="note-header">
+                    <h3>{{ note.title }}</h3>
+                    <span class="note-date">{{ note.created_at.strftime('%d.%m.%Y %H:%M') }}</span>
+                </div>
+                <div class="note-content">
+                    {{ note.content|truncate(25) }}
+                </div>
+                {% if note.tags %}
+                <div class="note-tags">
+                    {% for tag in note.tags.split(',') %}
+                    <span class="tag">{{ tag.strip() }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-notes">
+        <p>У вас пока нет заметок</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

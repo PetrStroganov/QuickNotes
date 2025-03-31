@@ -19,13 +19,17 @@ body {
  }
 
 
- header {
-     background-color: #ff5722;
-     color: rgb(0, 0, 0);
-     padding: 10px 0;
-     width: 100%;
-     text-align: center;
- }
+header {
+    background-color: #ff5722;
+    color: rgb(0, 0, 0);
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
  nav {
      display: flex;
@@ -36,24 +40,43 @@ body {
      padding: 0 20px;
  }
 
- .logo {
-     font-size: 24px;
-     font-weight: bold;
- }
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    transition: var(--transition);
+}
 
- .nav-links a {
-    color: rgb(0, 0, 0);
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo a {
+    color: var(--dark-color);
     text-decoration: none;
-    margin-left: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: var(--dark-color);
+    text-decoration: none;
     font-size: 16px;
-    padding: 5px 10px;
-    border: 2px solid #000000;
-    border-radius: 4px;
+    padding: 8px 16px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 30px;
+    transition: var(--transition);
+    font-weight: 500;
 }
 
 .nav-links a:hover {
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--dark-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 

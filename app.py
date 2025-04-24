@@ -1,5 +1,5 @@
 import bcrypt
-from flask import Flask, render_template, redirect, url_for, flash, abort
+from flask import Flask, render_template, redirect, url_for, flash, abort, request
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from sqlalchemy.exc import IntegrityError
 from forms import RegistrationForm, LoginForm, NoteForm
@@ -26,10 +26,11 @@ def load_user(user_id):
 @app.route('/')
 @login_required
 def index():
-    notes = db.session.scalars(
-        db.select(Note)
-        .filter_by(user_id=current_user.id)
-        .order_by(Note.created_at.desc())).all()
+    tag = request.args.get('tag')
+    query = db.select(Note).filter_by(user_id=current_user.id, is_private=False)
+    if tag:
+        query = query.filter(Note.tags.like(f'%{tag}%'))
+    notes = db.session.scalars(query.order_by(Note.created_at.desc())).all()
     return render_template('notes.html', notes=notes)
 
 
@@ -43,8 +44,10 @@ def add_note():
                 title=form.title.data,
                 content=form.content.data,
                 tags=form.tags.data,
+                is_private=form.is_private.data,
                 user_id=current_user.id
             )
+
             db.session.add(note)
             db.session.commit()
             flash('Заметка успешно создана!', 'success')

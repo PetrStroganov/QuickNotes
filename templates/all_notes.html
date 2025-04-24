@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Все заметки</h2>
+    {% for note in notes %}
+        <div class="note">
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.content }}</p>
+            <small>Теги: {{ note.tags }}</small>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+

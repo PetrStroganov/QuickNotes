@@ -30,7 +30,14 @@
             {% endfor %}
         </div>
 
+        <div class="form-group">
+            {{ form.is_private.label }}
+            {{ form.is_private() }}
+        </div>
+        
+
         <button type="submit" class="btn">Создать заметку</button>
+        
     </form>
 </div>
 {% endblock %}

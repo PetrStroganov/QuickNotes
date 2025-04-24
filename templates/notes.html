@@ -6,6 +6,18 @@
         <h1>Мои заметки</h1>
         <a href="{{ url_for('add_note') }}" class="btn">+ Новая заметка</a>
     </div>
+
+    <!-- Форма фильтрации по тегу -->
+    <form method="get" action="{{ url_for('index') }}" class="filter-form">
+        <div class="input-group">
+            <input type="text" name="tag" class="form-control" placeholder="Фильтр по тегу" value="{{ request.args.get('tag', '') }}">
+            <button class="btn btn-primary" type="submit">Фильтровать</button>
+            {% if request.args.get('tag') %}
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Сбросить</a>
+            {% endif %}
+        </div>
+    </form>
+
     {% if notes %}
     <div class="notes-grid">
         {% for note in notes %}

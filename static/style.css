@@ -325,7 +325,6 @@ nav {
     font-weight: 500;
 }
 
-/* Детали заметки */
 .note-detail-container {
     max-width: 800px;
     margin: 30px auto;
@@ -339,15 +338,19 @@ nav {
     font-size: 1.1em;
     color: var(--dark-color);
     white-space: pre-wrap;
-    overflow: hidden;
- }
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
 
- .note-detail-card {
+.note-detail-card {
     background: #ff5722;
     border-radius: 8px;
     padding: 30px;
     margin-top: 20px;
- }
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+}
 
 .note-actions {
     display: flex;

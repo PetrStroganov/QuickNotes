@@ -10,7 +10,7 @@
             {{ form.title.label }}
             {{ form.title(class="form-control") }}
             {% for error in form.title.errors %}
-            <div class="alert-error">{{ error }}</div>
+                <div class="alert-error">{{ error }}</div>
             {% endfor %}
         </div>
 
@@ -18,7 +18,7 @@
             {{ form.content.label }}
             {{ form.content(class="form-control", rows=5) }}
             {% for error in form.content.errors %}
-            <div class="alert-error">{{ error }}</div>
+                <div class="alert-error">{{ error }}</div>
             {% endfor %}
         </div>
 
@@ -26,7 +26,7 @@
             {{ form.tags.label }}
             {{ form.tags(class="form-control") }}
             {% for error in form.tags.errors %}
-            <div class="alert-error">{{ error }}</div>
+                <div class="alert-error">{{ error }}</div>
             {% endfor %}
         </div>
 

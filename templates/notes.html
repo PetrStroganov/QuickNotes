@@ -4,7 +4,6 @@
 <div class="notes-container">
     <div class="notes-header">
         <h1>Мои заметки</h1>
-        <a href="{{ url_for('add_note') }}" class="btn">+ Новая заметка</a>
     </div>
 
     <!-- Форма фильтрации по тегу -->
@@ -43,7 +42,7 @@
     </div>
     {% else %}
     <div class="empty-notes">
-        <p>У вас пока нет заметок</p>
+        <h1>У вас пока нет заметок</h1>
     </div>
     {% endif %}
 </div>

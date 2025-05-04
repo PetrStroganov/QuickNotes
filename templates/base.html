@@ -9,11 +9,12 @@
 <body>
 <header>
     <nav>
-        <div class="logo">QuickNotes</div>
+        <div class="logo">
+            <a href="{{ url_for('index') }} ">QuickNotes</a>
+        </div>
         <div class="nav-links">
             {% if current_user.is_authenticated %}
             <a href="{{ url_for('add_note') }}">Новая заметка</a>
-            <a href="{{ url_for('index') }}">Мои заметки</a>
             <a href="{{ url_for('logout') }}">Выйти</a>
             {% else %}
             <a href="{{ url_for('login') }}">Войти</a>
@@ -26,15 +27,12 @@
 <main class="container">
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-    {% for message in messages %}
-    <div class="alert">{{ message }}</div>
-    {% endfor %}
     {% endif %}
     {% endwith %}
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
     {% for category, message in messages %}
-    <div class="alert alert-{{ category }}">{{ message }}</div>
+    <div class="alert-error">{{ message }}</div>
     {% endfor %}
     {% endif %}
     {% endwith %}

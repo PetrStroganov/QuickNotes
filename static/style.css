@@ -1,4 +1,3 @@
-/* Основные стили */
 :root {
     --primary-color: #ff5722;
     --primary-hover: #e64a19;
@@ -23,7 +22,7 @@ body {
     line-height: 1.6;
 }
 
-/* Улучшенный контейнер */
+
 .container {
     width: 100%;
     max-width: 1200px;
@@ -37,7 +36,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Улучшенный хедер */
 header {
     background-color: var(--primary-color);
     color: var(--dark-color);
@@ -70,6 +68,11 @@ nav {
     transform: scale(1.05);
 }
 
+.logo a {
+    color: var(--dark-color);
+    text-decoration: none;
+}
+
 .nav-links {
     display: flex;
     gap: 15px;
@@ -93,16 +96,16 @@ nav {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Улучшенные формы */
-.auth-form {
-    max-width: 450px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
-    text-align: center;
-    animation: slideUp 0.5s ease-out;
+
+ .auth-form {
+     max-width: 400px;
+     margin: 20px auto;
+     padding: 20px;
+     background-color: white;
+     border-radius: 8px;
+     box-shadow: var(--card-shadow);
+     text-align: center;
+     animation: slideUp 0.5s ease-out;
 }
 
 @keyframes slideUp {
@@ -110,57 +113,40 @@ nav {
     to { transform: translateY(0); opacity: 1; }
 }
 
-.auth-form h2 {
-    margin-bottom: 25px;
-    color: var(--primary-color);
-    font-size: 28px;
-    position: relative;
-    padding-bottom: 10px;
-}
+ .auth-form h2 {
+     margin-bottom: 20px;
+     color: #ff5722;
+ }
 
-.auth-form h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: var(--primary-color);
-    border-radius: 3px;
-}
+ .form-group {
+     margin-bottom: 15px;
+     text-align: left;
+ }
 
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
+ .form-group label {
+     display: block;
+     margin-bottom: 5px;
+     font-weight: bold;
+     color: #333;
+ }
 
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--dark-color);
-}
+ .form-control {
+     width: 100%;
+     padding: 5px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     font-size: 16px;
+     background-color: #f9f9f9;
+ }
 
-.form-control {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: #f9f9f9;
-    transition: var(--transition);
-}
+ .form-control:focus {
+     border-color: #ff5722;
+     outline: none;
+ }
 
-.form-control:focus {
-    border-color: var(--primary-color);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.2);
-}
 
-/* Улучшенные кнопки */
 .btn {
-    width: 100%;
+    width: 60%;
     padding: 12px;
     background-color: var(--primary-color);
     color: var(--dark-color);
@@ -171,6 +157,8 @@ nav {
     cursor: pointer;
     transition: var(--transition);
     letter-spacing: 0.5px;
+    margin: 10px;
+    align: left;
 }
 
 .btn:hover {
@@ -183,8 +171,9 @@ nav {
     transform: translateY(0);
 }
 
-/* Улучшенные алерты */
-.alert {
+
+
+.alert-success {
     padding: 15px 20px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -194,26 +183,45 @@ nav {
     align-items: center;
     max-width: 100%;
     animation: fadeIn 0.5s ease-out;
-}
-
-.alert-success {
     background-color: #d4edda;
     color: #155724;
     border-left: 5px solid #28a745;
 }
 
 .alert-error {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin: 10px auto;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    animation: fadeIn 0.5s ease-out;
     background-color: #f8d7da;
     color: #721c24;
     border-left: 5px solid #dc3545;
 }
 
-.alert i {
-    margin-right: 10px;
-    font-size: 20px;
+
+ .auth-form p {
+     text-align: center;
+     margin-top: 15px;
+     color: #333;
+ }
+
+ .auth-form a {
+    color: #ff5722;
+    text-decoration: none;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 2px;
 }
 
-/* Улучшенные заметки */
+ .auth-form a:hover {
+     text-decoration: underline;
+ }
+
+
 .notes-container {
     max-width: 1200px;
     margin: 30px auto;
@@ -255,6 +263,7 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
+    margin: 50px;
 }
 
 .note-card {
@@ -267,34 +276,20 @@ nav {
     overflow: hidden;
 }
 
-.note-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: var(--dark-color);
-}
+ .note-card:hover {
+    background: #ff5700;
+ }
 
-.note-card:hover {
-    transform: translateY(-10px);
-    background: var(--primary-hover);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
+ .note-link {
+    text-decoration: none;
+    color: inherit;
+ }
 
 .note-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 15px;
-}
-
-.note-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0;
-    color: var(--dark-color);
 }
 
 .note-date {
@@ -338,20 +333,21 @@ nav {
     animation: fadeIn 0.5s ease-out;
 }
 
-.note-detail-card {
-    background: var(--primary-color);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: var(--card-shadow);
-    position: relative;
-}
 
 .note-content-full {
     line-height: 1.8;
     font-size: 1.1em;
     color: var(--dark-color);
     white-space: pre-wrap;
-}
+    overflow: hidden;
+ }
+
+ .note-detail-card {
+    background: #ff5722;
+    border-radius: 8px;
+    padding: 30px;
+    margin-top: 20px;
+ }
 
 .note-actions {
     display: flex;
@@ -369,24 +365,19 @@ nav {
     transition: var(--transition);
 }
 
-.edit-btn {
-    background-color: #007bff;
-    color: white;
-    border: 2px solid #0056b3;
+
+
+.back-link {
+    color: var(--light-color);
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: var(--transition);
 }
 
-.delete-btn {
-    background-color: #dc3545;
-    color: white;
-    border: 2px solid #a71d2a;
-}
 
-.action-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Форма заметки */
 .note-form {
     max-width: 800px;
     margin: 30px auto;
@@ -404,73 +395,6 @@ nav {
     text-align: center;
 }
 
-/* Футер */
-footer {
-    width: 100%;
-    background-color: var(--dark-color);
-    color: var(--light-color);
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 50px;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.footer-links {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-links a {
-    color: var(--light-color);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.footer-links a:hover {
-    color: var(--primary-color);
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .notes-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .note-detail-card,
-    .note-form {
-        padding: 20px;
-    }
-}
-
-/* Дополнительные эффекты */
-.back-link {
-    color: var(--light-color);
-    text-decoration: none;
-    margin-bottom: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    transition: var(--transition);
-}
-
-.back-link:hover {
-    color: var(--primary-color);
-    transform: translateX(-5px);
-}
-
 .loading-spinner {
     display: inline-block;
     width: 40px;
@@ -484,22 +408,4 @@ footer {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
-}
-
-/* Кастомный скроллбар */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-hover);
 }

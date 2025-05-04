@@ -20,6 +20,5 @@ class Note(db.Model):
     tags = sqlalchemy.Column(sqlalchemy.String(100))
     user_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('users.id'), nullable=False)
     created_at = sqlalchemy.Column(sqlalchemy.DateTime, default=sqlalchemy.func.now())
-    is_private = sqlalchemy.Column(sqlalchemy.Boolean, default=False)  # <--- добавлено
-
+    is_private = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
     user = sqlalchemy.orm.relationship('User', backref='notes')

@@ -3,16 +3,21 @@
 {% block content %}
 <div class="notes-container">
     <div class="notes-header">
-        <h1>Мои заметки</h1>
+        <h1>{{ page_title }}</h1>
+        <div class="tabs">
+            <a href="{{ url_for('index') }}" class="tab {% if request.endpoint == 'index' %}active{% endif %}">Мои заметки</a>
+            <a href="{{ url_for('all_notes') }}" class="tab {% if request.endpoint == 'all_notes' %}active{% endif %}">Все заметки</a>
+
+        </div>
     </div>
 
     <!-- Форма фильтрации по тегу -->
-    <form method="get" action="{{ url_for('index') }}" class="filter-form">
+    <form method="get" action="{{ url_for(request.endpoint) }}" class="filter-form">
         <div class="input-group">
             <input type="text" name="tag" class="form-control" placeholder="Фильтр по тегу" value="{{ request.args.get('tag', '') }}">
             <button class="btn btn-primary" type="submit">Фильтровать</button>
             {% if request.args.get('tag') %}
-            <a href="{{ url_for('index') }}" class="btn btn-secondary">Сбросить</a>
+            <a href="{{ url_for(request.endpoint) }}" class="btn btn-secondary">Сбросить</a>
             {% endif %}
         </div>
     </form>
@@ -32,7 +37,8 @@
                 {% if note.tags %}
                 <div class="note-tags">
                     {% for tag in note.tags.split(',') %}
-                    <span class="tag">{{ tag.strip() }}</span>
+                    {% set clean_tag = tag.strip() %}
+                    <a href="{{ url_for(request.endpoint, tag=clean_tag) }}" class="tag">{{ clean_tag }}</a>
                     {% endfor %}
                 </div>
                 {% endif %}
@@ -42,7 +48,7 @@
     </div>
     {% else %}
     <div class="empty-notes">
-        <h1>У вас пока нет заметок</h1>
+        <h1>Заметки не найдены</h1>
     </div>
     {% endif %}
 </div>

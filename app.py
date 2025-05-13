@@ -35,7 +35,7 @@ def index():
 @login_required
 def all_notes():
     tag = request.args.get('tag')
-    query = db.select(Note).filter(Note.is_private == False)
+    query = db.select(Note)
     if tag:
         query = query.filter(Note.tags.ilike(f"%{tag}%"))
     notes = db.session.scalars(query.order_by(Note.created_at.desc())).all()
@@ -51,7 +51,6 @@ def add_note():
                 title=form.title.data,
                 content=form.content.data,
                 tags=form.tags.data,
-                is_private=form.is_private.data,
                 user_id=current_user.id
             )
 

@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, TextAreaField
 from wtforms.validators import DataRequired, Email, Length
-from wtforms import BooleanField
 
 
 class RegistrationForm(FlaskForm):
@@ -32,4 +31,3 @@ class NoteForm(FlaskForm):
     tags = StringField('Теги (через запятую)', validators=[
         Length(max=100, message="Максимум 100 символов")
     ])
-    is_private = BooleanField('Приватная заметка')

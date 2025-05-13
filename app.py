@@ -109,5 +109,16 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
+@app.route('/delete_note/<int:note_id>', methods=['POST'])
+@login_required
+def delete_note(note_id):
+    note = db.session.get(Note, note_id)
+    if not note or note.user_id != current_user.id:
+        abort(403)
+    db.session.delete(note)
+    db.session.commit()
+    flash('Заметка успешно удалена', 'success')
+    return redirect(url_for('index'))
+
 if __name__ == "__main__":
     app.run(port=8080, host="127.0.0.1")

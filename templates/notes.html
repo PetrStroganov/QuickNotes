@@ -24,6 +24,9 @@
             <div class="note-card">
                 <div class="note-header">
                     <h3>{{ note.title }}</h3>
+                    <form action="{{ url_for('delete_note', note_id=note.id) }}" method="POST" class="delete-form">
+                        <button type="submit" class="delete-btn">×</button>
+                    </form>
                     <span class="note-date">{{ note.created_at.strftime('%d.%m.%Y %H:%M') }}</span>
                 </div>
                 <div class="note-content">
